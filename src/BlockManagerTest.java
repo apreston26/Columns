@@ -4,7 +4,6 @@ public class BlockManagerTest {
     public static void main(String[] args) {
         BlockManagerTest test = new BlockManagerTest();
         test.bigBoard();
-        test.smallBoard();
     }
 
     private void smallBoard(){

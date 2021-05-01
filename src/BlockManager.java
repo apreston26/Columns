@@ -24,30 +24,50 @@ public class BlockManager {
                 board[i][j] = ".";
 
 
-
                 // Symbol Generator
                 if (symbolNumber == 0) {
-                    board[testNum][0 + j] = "*";
-                    Thread.sleep(50);
+                    if (board[i][j].equals(".")) {
+                        board[numOfRows - 1][testNum] = "*";
+
+                    } else {
+                        board[numOfRows - 2][testNum]="*";
+                    }
+
                 } else if (symbolNumber == 1) {
-                    board[testNum][0 + j] = "%";
-                    Thread.sleep(50);
+                    if (board[i][j].equals(".")) {
+                        board[numOfRows - 1][testNum] = "%";
+
+                    } else {
+                        board[numOfRows - 2][testNum]="%";
+                    }
+
                 } else if (symbolNumber == 2) {
-                    board[testNum][0 + j] = "/";
-                    Thread.sleep(50);
+                    if (board[i][j].equals(".")) {
+                        board[numOfRows - 1][testNum] = "/";
+
+                    } else {
+                        board[numOfRows - 2][testNum]="/";
+                    }
+
                 } else if (symbolNumber == 3) {
-                    board[testNum][0 + j] = "$";
-                    Thread.sleep(50);
+                    if (board[i][j].equals(".")) {
+                        board[numOfRows - 1][testNum] = "$";
+
+                    } else {
+                        board[numOfRows - 2][testNum]="$";
+                    }
                 } else {
-                    board[testNum][0 + j] = "?";
-                    Thread.sleep(50);
+                    if (board[i][j].equals(".")) {
+                        board[numOfRows - 1][testNum] = "?";
+
+                    } else {
+                        board[numOfRows - 2][testNum]="?";
+                    }
                 }
                 if (!board[i][j].equals(".")) {
                     counter++;
                 }
-
             }
-            System.out.println();
         }
         return board;
     }
@@ -55,7 +75,7 @@ public class BlockManager {
 
     @Override
     public String toString() {
-        String trimmedString = null;
+        String trimmedString = "";
         try {
             trimmedString = Arrays.deepToString(boardCreator());
         } catch (InterruptedException e) {
