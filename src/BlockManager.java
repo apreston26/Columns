@@ -5,65 +5,26 @@ public class BlockManager {
 
     int numOfRows;
     int numOfCols;
-    Random random = new Random();
-    int symbolNumber = random.nextInt(4);
-    int testNum;
+    int numOfBlocks;
+    int symbolNumber;
     int counter = 0;
+    int pieceSize = 3;
+    Random random = new Random();
+    String boardString;
+    String newPiece = "";
 
-    BlockManager(int rows, int cols) {
+    BlockManager(int rows, int cols, int blockTypes) {
         numOfRows = rows;
         numOfCols = cols;
-        testNum = random.nextInt(rows);
-
+        numOfBlocks = blockTypes;
+        symbolNumber = random.nextInt(4);
     }
 
-    private String[][] boardCreator() throws InterruptedException {
+    private String[][] boardCreator() {
         String[][] board = new String[numOfRows][numOfCols];
         for (int i = 0; i < numOfRows; i++) {
             for (int j = 0; j < numOfCols; j++) {
                 board[i][j] = ".";
-
-
-                // Symbol Generator
-                if (symbolNumber == 0) {
-                    if (board[i][j].equals(".")) {
-                        board[numOfRows - 1][testNum] = "*";
-
-                    } else {
-                        board[numOfRows - 2][testNum]="*";
-                    }
-
-                } else if (symbolNumber == 1) {
-                    if (board[i][j].equals(".")) {
-                        board[numOfRows - 1][testNum] = "%";
-
-                    } else {
-                        board[numOfRows - 2][testNum]="%";
-                    }
-
-                } else if (symbolNumber == 2) {
-                    if (board[i][j].equals(".")) {
-                        board[numOfRows - 1][testNum] = "/";
-
-                    } else {
-                        board[numOfRows - 2][testNum]="/";
-                    }
-
-                } else if (symbolNumber == 3) {
-                    if (board[i][j].equals(".")) {
-                        board[numOfRows - 1][testNum] = "$";
-
-                    } else {
-                        board[numOfRows - 2][testNum]="$";
-                    }
-                } else {
-                    if (board[i][j].equals(".")) {
-                        board[numOfRows - 1][testNum] = "?";
-
-                    } else {
-                        board[numOfRows - 2][testNum]="?";
-                    }
-                }
                 if (!board[i][j].equals(".")) {
                     counter++;
                 }
@@ -72,21 +33,28 @@ public class BlockManager {
         return board;
     }
 
+    public String pieceGenerator() {
+        for (int i = 0; i < pieceSize; i++) {
+            int firstPiece = random.nextInt(pieceSize);
+            switch (firstPiece) {
+                case 0 -> newPiece += "a";
+                case 1 -> newPiece += "b";
+                case 2 -> newPiece += "c";
+
+            }
+        }
+        return newPiece;
+    }
 
     @Override
     public String toString() {
-        String trimmedString = "";
-        try {
-            trimmedString = Arrays.deepToString(boardCreator());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        trimmedString = trimmedString
+        boardString = Arrays.deepToString(boardCreator());
+        boardString = boardString
                 .replace("[[", " ")
                 .replace(",", "")
                 .replace("[", "")
                 .replace("]", "\n");
-        return trimmedString;
+        return boardString;
 
     }
 }
