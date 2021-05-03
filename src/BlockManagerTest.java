@@ -4,7 +4,7 @@ public class BlockManagerTest {
   private static final int MAX_SIZE = 10;
   private static final int ROW_SIZE = (int) (Math.random() * (MAX_SIZE - MIN_SIZE)) + MIN_SIZE;
   private static final int COL_SIZE = (int) (Math.random() * (MAX_SIZE - MIN_SIZE)) + MIN_SIZE;
-  private static final int NUM_OF_BLOCK_TYPES = 3;
+  private static final int NUM_OF_BLOCK_TYPES = 2;
   private static final int NUM_OF_TURNS = 10;
 
   public static void main(String[] args) {

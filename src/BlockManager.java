@@ -66,21 +66,30 @@ public class BlockManager {
       for (int j = 1; j < numOfCols - 1; j++) {
         // Diagonal Matches
         if ( board[i][j].equals(board[i + 1][j + 1 ]) && board[i][j].equals(board[i - 1][j - 1])) {
-          board[i][j] = ".";
-          board[i + 1][j + 1] = ".";
-          board[i - 1][j - 1] = ".";
-//           Horizontal Matches
+            board[i][j] = ".";
+            board[i + 1][j + 1] = ".";
+            board[i - 1][j - 1] = ".";
+        }else if (board[i][j].equals(board[i - 1][j + 1 ]) && board[i][j].equals(board[i + 1][j - 1])) {
+            board[i][j] = ".";
+            board[i - 1][j + 1] = ".";
+            board[i + 1][j - 1] = ".";
+          //Horizontal Matches
         } else if (board[i][j].equals(board[i][j - 1 ]) && board[i][j].equals(board[i][j + 1])) {
           board[i][j] = ".";
           board[i][j - 1] = ".";
           board[i][j + 1] = ".";
-
-//             Vertical Matches
+          //Vertical Matches
           } else if (board[i][j].equals(board[i - 1][j]) && board[i][j].equals(board[i + 1][j]) ) {
           board[i][j] = ".";
           board[i - 1][j] = ".";
           board[i + 1][j] = ".";
         }
+
+        if (board[i][j].equals(".") && !board[i - 1][j].equals(".")) {
+            board[i][j] = board[i -1][j];
+            board[i - 1][j] = ".";
+        }
+
       }
     }
     return board;
