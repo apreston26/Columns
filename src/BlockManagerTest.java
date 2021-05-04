@@ -11,32 +11,53 @@ public class BlockManagerTest {
 
   public static void main(String[] args) {
     BlockManagerTest test = new BlockManagerTest();
-    test.bigBoard();
-
+    test.secondBoard();
+    test.firstBoard();
   }
 
-  private void smallBoard() {
-    BlockManager smallBoard = new
+  /**
+   * A method that will check our BlockManager class for the first time
+   */
+  private void firstBoard() {
+    BlockManager firstBoard = new
             BlockManager(ROW_SIZE, COL_SIZE, NUM_OF_BLOCK_TYPES);
-    String board = smallBoard.toString();
     System.out.println("Test first block manager");
-    System.out.print(board);
-    System.out.println("Objects on Screen: " + smallBoard.counter);
-    System.out.println(smallBoard.pieceGenerator());
+    System.out.println("Created empty game with " + ROW_SIZE + " rows, " +
+            COL_SIZE + " cols, " + NUM_OF_BLOCK_TYPES + " block types");
+    System.out.println(firstBoard.blankBoard());
+    for (int i = 0; i < NUM_OF_TURNS - 1; i++) {
+      System.out.println("Dropping new piece . . . ");
+      System.out.println(firstBoard.printNewBoard());
+      System.out.println("Checking for columns . . .");
+      if (firstBoard.caseFound) {
+        System.out.println(firstBoard.typeOfMatch + " has been found");
+      } else {
+        System.out.println("No matches have been found");
+      }
+      System.out.println(firstBoard.printCheckedBoard());
+    }
   }
 
-  private void bigBoard() {
-    BlockManager bigBoard = new
+  /**
+   * A method that will check our BlockManager class for the second time
+   */
+  private void secondBoard() {
+    BlockManager secondBoard = new
             BlockManager(ROW_SIZE, COL_SIZE, NUM_OF_BLOCK_TYPES);
     System.out.println("Test second block manager");
     System.out.println("Created empty game with " + ROW_SIZE + " rows, " +
         COL_SIZE + " cols, " + NUM_OF_BLOCK_TYPES + " block types");
-    System.out.println(bigBoard.blankBoard());
+    System.out.println(secondBoard.blankBoard());
     for (int i = 0; i < NUM_OF_TURNS - 1; i++) {
-      System.out.println("Dropping new piece . . .");
-      System.out.println(bigBoard.printNewBoard());
+      System.out.println("Dropping new piece . . . ");
+      System.out.println(secondBoard.printNewBoard());
       System.out.println("Checking for columns . . .");
-      System.out.println(bigBoard.printCheckedBoard());
+      if (secondBoard.caseFound) {
+        System.out.println(secondBoard.typeOfMatch + " has been found");
+      } else {
+        System.out.println("No matches have been found");
+      }
+      System.out.println(secondBoard.printCheckedBoard());
     }
   }
 }
