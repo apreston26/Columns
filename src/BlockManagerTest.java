@@ -27,7 +27,6 @@ public class BlockManagerTest {
     System.out.println(firstBoard.blankBoard());
     for (int i = 0; i < NUM_OF_TURNS - 1; i++) {
       System.out.println("Dropping new piece . . . ");
-      System.out.println(firstBoard.printNewBoard());
       System.out.println("Checking for columns . . .");
       if (firstBoard.caseFound) {
         System.out.println(firstBoard.typeOfMatch + " has been found");
@@ -50,7 +49,7 @@ public class BlockManagerTest {
     System.out.println(secondBoard.blankBoard());
     for (int i = 0; i < NUM_OF_TURNS - 1; i++) {
       System.out.println("Dropping new piece . . . ");
-      System.out.println(secondBoard.printNewBoard());
+
       System.out.println("Checking for columns . . .");
       if (secondBoard.caseFound) {
         System.out.println(secondBoard.typeOfMatch + " has been found");

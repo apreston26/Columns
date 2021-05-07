@@ -55,34 +55,15 @@ public class BlockManager {
     /**
      * piecePlacer is the second most crucial part of this program that would
      * place our pieces down on the board using pieceGenerator for the args.
-     * @param pieceA a call to pieceGenerator
-     * @param pieceB a call to pieceGenerator
-     * @param pieceC a call to pieceGenerator
      * @returns a newly updated board that will included a new piece
      */
-    private String[][] piecePlacer(String pieceA,
-                                   String pieceB, String pieceC) {
-        int piecePlacement = random.nextInt(numOfCols);
-        if (board[numOfRows - 1][piecePlacement].equals(".") &&
-                (board[numOfRows - 2][piecePlacement].equals(".")) &&
-                (board[numOfRows - 3][piecePlacement].equals("."))) {
-            board[numOfRows - 1][piecePlacement] = pieceA;
-            board[numOfRows - 2][piecePlacement] = pieceB;
-            board[numOfRows - 3][piecePlacement] = pieceC;
-
-        } else if (board[numOfRows - 4][piecePlacement].equals(".") &&
-                (board[numOfRows - 5][piecePlacement].equals(".")) &&
-                (board[numOfRows - 6][piecePlacement].equals("."))) {
-            board[numOfRows - 4][piecePlacement] = pieceA;
-            board[numOfRows - 5][piecePlacement] = pieceB;
-            board[numOfRows - 6][piecePlacement] = pieceC;
-        } else if (piecePlacement < numOfCols &&
-            board[numOfRows - 1][piecePlacement + 1].equals(".") &&
-                    (board[numOfRows - 2][piecePlacement + 1].equals(".")) &&
-                    (board[numOfRows - 3][piecePlacement + 1].equals("."))) {
-                board[numOfRows - 1][piecePlacement + 1] = pieceA;
-                board[numOfRows - 2][piecePlacement + 1] = pieceB;
-                board[numOfRows - 3][piecePlacement + 1] = pieceC;
+    private String[][] piecePlacer() {
+        for (int i = 0; i < numOfRows; i++) {
+            for (int j = 0; j < numOfCols; j++) {
+                while (board[i][j].equals(".")) {
+                    board[i][j] = pieceGenerator();
+                }
+            }
         }
         return this.board;
     }
@@ -94,6 +75,7 @@ public class BlockManager {
      * remove pieces that are matching 3 in any direction
      */
     private String[][] boardUpdater() {
+
         for (int a = 1; a < numOfRows - 1; a++) {
             for (int b = 1; b < numOfCols - 1; b++) {
                 // Diagonal Matches
@@ -179,8 +161,7 @@ public class BlockManager {
      * @return a new board that is formatted along with a new piece
      */
     public String[][] printNewBoard() {
-        board = piecePlacer(pieceGenerator(),
-                pieceGenerator(), pieceGenerator());
+        board = piecePlacer();
         boardString = Arrays.deepToString(board);
         boardString = boardString
                 .replace("[[", " ")
