@@ -9,7 +9,7 @@ public class BlockManager {
     private Random random = new Random();
     private String boardString;
     private String newPiece = "";
-    private String[][] board;
+    String[][] board;
     boolean caseFound = false;
     String typeOfMatch;
 
@@ -163,7 +163,7 @@ public class BlockManager {
      * blankBoard provides outside classes to create a blank board
      * @returns a new blank board that is properly formatted to make a board
      */
-    public String blankBoard() {
+    public String[][] blankBoard() {
         board = boardCreator();
         boardString = Arrays.deepToString(board);
         boardString = boardString
@@ -171,7 +171,7 @@ public class BlockManager {
                 .replace(",", "")
                 .replace("[", "")
                 .replace("]", "\n");
-        return boardString;
+        return board;
     }
 
     /**
