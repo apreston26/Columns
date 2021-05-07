@@ -76,6 +76,13 @@ public class BlockManager {
             board[numOfRows - 4][piecePlacement] = pieceA;
             board[numOfRows - 5][piecePlacement] = pieceB;
             board[numOfRows - 6][piecePlacement] = pieceC;
+        } else if (piecePlacement < numOfCols &&
+            board[numOfRows - 1][piecePlacement + 1].equals(".") &&
+                    (board[numOfRows - 2][piecePlacement + 1].equals(".")) &&
+                    (board[numOfRows - 3][piecePlacement + 1].equals("."))) {
+                board[numOfRows - 1][piecePlacement + 1] = pieceA;
+                board[numOfRows - 2][piecePlacement + 1] = pieceB;
+                board[numOfRows - 3][piecePlacement + 1] = pieceC;
         }
         return this.board;
     }
