@@ -13,7 +13,16 @@ public class Tetris extends JFrame {
     String[][] gameBoard;
 
     public Tetris() {
+        setTitle("Candy Crush");
+        newGame();
+        setSize(screenWidth,screenHeight);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
 
+
+    private void newGame() {
         JPanel gamePanel = new JPanel() {
             public void paintComponent(Graphics g) {
                 BlockManager logic = new BlockManager(ROW_SIZE, COLUMN_SIZE, NUM_OF_BLOCK_TYPES);
@@ -28,49 +37,13 @@ public class Tetris extends JFrame {
                 }
             }
         };
-
         getContentPane().add(gamePanel, BorderLayout.CENTER);
-    }
-
-
-    private void newGame() {
-        JPanel gamePanel = new JPanel() {
-            public void paintComponent(Graphics g) {
-                BlockManager logic = new BlockManager(ROW_SIZE, COLUMN_SIZE, NUM_OF_BLOCK_TYPES);
-                gameBoard = logic.blankBoard();
-                for (int i = 0; i < ROW_SIZE; i++) {
-                    for (int j = 0; j < COLUMN_SIZE; j++) {
-                        if (gameBoard[i][j].equals(".")) {
-                            for (int c = 0; c < screenWidth; c += boxSize) {
-                                for (int d = 0; d < screenHeight; d += boxSize)
-                                    g.drawRect(c, d, boxSize, boxSize);
-                            }
-                        }
-                    }
-                }
-            }
-        };
-
-        getContentPane().add(gamePanel, BorderLayout.CENTER);
-    }
-
-    private void setButton() {
-        for (int i = 1; i < 6; i++) {
-            add(new JButton("Button" + i));
-        }
     }
 
     public static void main(String[] args) {
-       Tetris tetris = new Tetris();
-       tetris.createGUI();
+        new Tetris();
+
     }
 
-    private void createGUI() {
-        setTitle("Candy Crush");
-        setSize(screenWidth,screenHeight);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setVisible(true);
-    }
 
 }
