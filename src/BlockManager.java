@@ -7,7 +7,7 @@ public class BlockManager {
     private final int numOfCols;
     private int numOfBlocks;
     private Random random = new Random();
-    private String boardString;
+    String boardString;
     private String newPiece = "";
     String[][] board;
     boolean caseFound = false;
@@ -178,7 +178,7 @@ public class BlockManager {
      * This provides outside classes with a board that has a new piece inside it
      * @return a new board that is formatted along with a new piece
      */
-    public String printNewBoard() {
+    public String[][] printNewBoard() {
         board = piecePlacer(pieceGenerator(),
                 pieceGenerator(), pieceGenerator());
         boardString = Arrays.deepToString(board);
@@ -187,7 +187,7 @@ public class BlockManager {
                 .replace(",", "")
                 .replace("[", "")
                 .replace("]", "\n");
-        return boardString;
+        return board;
     }
 
     /**
@@ -196,7 +196,7 @@ public class BlockManager {
      * @return a new board that is formatted and checked of the specified
      * conditions
      */
-    public String printCheckedBoard() {
+    public String[][] printCheckedBoard() {
         board = boardUpdater();
         boardString = Arrays.deepToString(board);
         boardString = boardString
@@ -204,7 +204,7 @@ public class BlockManager {
                 .replace(",", "")
                 .replace("[", "")
                 .replace("]", "\n");
-        return boardString;
+        return board;
     }
 
 }
